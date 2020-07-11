@@ -8,8 +8,8 @@ Netx is a python script made with [Pexpect](https://pexpect.readthedocs.io/) lib
  * Auto choose Python version based on Remote Host
  * Colorful Output
  * Resize Shell as you want
-  * Ask to change user (sudo user)
-  
+ * Ask to change user (sudo user)
+ * Use netcat 
   **Screenshots**
    
 (1). Help
