@@ -38,7 +38,7 @@ def port_define():
     global port
     
     parser = argparse.ArgumentParser(description=desc)
-    parser.add_argument("-p", "--port", type=str, help="Listining Port")
+    parser.add_argument("-p", "--port", type=str, help="Listening Port")
     args = parser.parse_args()
     port = args.port
     if port == None:
