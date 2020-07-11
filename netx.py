@@ -61,8 +61,6 @@ def terminal_size(arg2):
         
         if len(row_size) + len(col_size) == 0:
             prRed("\nWrong Input, Try Again\n")
-            print(f"r : {len(row_size)}")
-            print(len(col_size))
             terminal_size(arg2)
         elif row_size.isalpha() or col_size.isalpha():
             
@@ -126,9 +124,9 @@ def take_control(proc):
             proc.sendcontrol("z")
             proc.sendline("stty raw -echo")
             proc.sendline("fg")
-            time.sleep(2)
+            time.sleep(time_wait)
             proc.sendline("reset xterm-256color")
-            time.sleep(2)
+            time.sleep(time_wait)
             proc.sendline("export TERM=xterm")
             os.system("clear")
             terminal_size(proc)
@@ -141,9 +139,9 @@ def take_control(proc):
             proc.sendcontrol("z")
             proc.sendline("stty raw -echo")
             proc.sendline("fg")
-            time.sleep(2)
+            time.sleep(time_wait)
             proc.sendline("reset xterm-256color")
-            time.sleep(2)
+            time.sleep(time_wait)
             proc.sendline("export TERM=xterm")
             os.system("clear")
             proc.sendline("clear")
@@ -232,7 +230,7 @@ def main():
 
 def questions(proc2):
     
-    time.sleep(2)
+    time.sleep(time_wait)
     prYellow('''
     Run: stty raw -echo (Y/N)
     ''')
@@ -240,7 +238,7 @@ def questions(proc2):
     if ques0.lower() == "y":
         
         proc2.sendcontrol('z')
-        time.sleep(2)
+        time.sleep(time_wait)
         proc2.sendline("stty raw -echo")
         prYellow('''
         Run: fg AND reset (Y/N)
@@ -250,7 +248,7 @@ def questions(proc2):
         if ques2.lower() == "y":
             
             proc2.sendline("fg")
-            time.sleep(1)
+            time.sleep(time_wait)
             proc2.sendline("reset")
             
             prYellow('''
@@ -299,3 +297,4 @@ def questions(proc2):
 os.system('clear')
 port_define()
 main()
+
