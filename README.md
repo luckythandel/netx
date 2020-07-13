@@ -10,6 +10,7 @@ Netx is a python script made with [Pexpect](https://pexpect.readthedocs.io/) lib
  * Resize Shell as you want
  * Change user (sudo user)
  * Use Netcat 
+ 
   **Screenshots**
    
 (1). Help
