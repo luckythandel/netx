@@ -27,6 +27,7 @@ Netx is a python script made with [Pexpect](https://pexpect.readthedocs.io/) lib
 
 
 **Donate**
+
 +91 9828654788 (paytm)
 
 **RUN**
@@ -39,5 +40,7 @@ Then run it with python3
     python3 netx.py
 
 **Contact**
+
 Email - luckythandel28@gmail.com
+
 Phone - +91 7014362046
