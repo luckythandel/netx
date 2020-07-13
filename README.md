@@ -1,6 +1,6 @@
 **About**
 
-Netx is a python script made with [Pexpect](https://pexpect.readthedocs.io/) lib.  Netx provies you a fully intrective shell. You can use this Python script in [CTF challanges](https://hackthebox.eu) where you have to use netcat listener and after getting a shell, you make it an interactive shell. It can be frustrating sometimes. this python script will do the same without wasting your precious time.
+Netx is a python script made with [Pexpect](https://pexpect.readthedocs.io/) lib.  Netx provies you a fully intrective shell. You can use this Python script in [CTF challanges](https://hackthebox.eu) where you have to use netcat listener and after getting a shell, you make it an interactive shell. It can be frustrating sometimes. this python script will do the same without wasting your precious time. But it is only for Linux.
 
 **Functions**
  * Choose which commad you want to run 
