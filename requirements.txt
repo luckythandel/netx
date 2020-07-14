@@ -1,9 +1,4 @@
 pexpect
-struct
-fcntl
-termios 
-signal
-sys
 termcolor
 argparse
 
