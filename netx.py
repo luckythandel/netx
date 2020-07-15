@@ -91,8 +91,8 @@ def take_control(proc):
     current_time = time.strftime("%H:%M:%S", t)
     prGreen(f"\nConnection Established At {current_time}\n")
     prPurple('''
-        "Y" : Let You Handel Commands
-        "N" : Let The Script Handels Commands
+        "Y" : Let You Handle Commands
+        "N" : Let The Script Handles Commands
     ''')
     python_control = input("Do you want to choose commands before executing(Y/N): ")
 
