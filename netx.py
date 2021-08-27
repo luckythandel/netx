@@ -2,7 +2,6 @@
 import os
 import pexpect
 import time
-import struct, fcntl, termios, signal, sys
 from termcolor import colored, cprint
 import argparse
 
@@ -12,6 +11,7 @@ import argparse
 #Python program to print 
 # colored text and background 
 def prRed(skk): print("\033[91m {}\033[00m" .format(skk)) 
+def prPink(skk): print("\033[45m{}\033[00m".format(skk))
 def prGreen(skk): print("\033[92m {}\033[00m" .format(skk)) 
 def prYellow(skk): print("\033[93m {}\033[00m" .format(skk)) 
 def prLightPurple(skk): print("\033[94m {}\033[00m" .format(skk)) 
@@ -42,7 +42,8 @@ def port_define():
     args = parser.parse_args()
     port = args.port
     if port == None:
-        port = input("\nPort: ")
+        print("[\033[93m?\033[00m] port: " ,end='')
+        port = input()
         if len(port) == 0:
             prRed("Not Valid\n")
             port_define()
@@ -54,11 +55,9 @@ def terminal_size(arg2):
     
     ask_size = input("Costmize Terminal Size (Y/N): ")
     if ask_size.lower() == "y":
-    
         prCyan("\nRecommended size ==> rows: 40 , cols: 150")
         row_size = input("Rows: ")
         col_size = input("Columns: ")
-        
         if len(row_size) + len(col_size) == 0:
             prRed("\nWrong Input, Try Again\n")
             terminal_size(arg2)
@@ -67,17 +66,12 @@ def terminal_size(arg2):
             prRed("\nWrong Input, Try Again\n")
             print("2")
             terminal_size(arg2)
-        
         else:
-            
             arg2.sendline(f"stty rows {row_size} cols {col_size}")
             ask_for_user(arg2)
-
     elif ask_size.lower() == "n":
-        
         ask_for_user(arg2)
         arg2.interact()
-    
     else:
         prRed("\nWrong Input, Try Again\n")
         terminal_size(arg2)
@@ -91,11 +85,10 @@ def take_control(proc):
     current_time = time.strftime("%H:%M:%S", t)
     prGreen(f"\nConnection Established At {current_time}\n")
     prPurple('''
-        "Y" : Let You Handle Commands
-        "N" : Let The Script Handles Commands
-    ''')
+        "Y" : Manual
+        "N" : Automate
+            ''')
     python_control = input("Do you want to choose commands before executing(Y/N): ")
-
     if python_control.lower() == 'y':
         
         prYellow('''
@@ -145,18 +138,15 @@ def take_control(proc):
             proc.sendline("export TERM=xterm")
             os.system("clear")
             proc.sendline("clear")
-            terminal_size(proc)
-            
-            
-        
+            terminal_size(proc)        
         else:
 
             prRed("Python2 And Python3 Are Not Available On Remote Host")
             exit(0)
-    
     else:
         prRed("wrong Input")
         proc.interact()
+
 
 def ask_for_user(arg1):
 
@@ -166,68 +156,46 @@ def ask_for_user(arg1):
     if user_present.lower() == "y":
         username = input("\nUsername: ")
         password = input("Password: ")
-
         if len(username) == 0:
-
             prRed("Username not found\nTryAain\n")
             ask_for_user(arg1)
-
         elif len(password) == 0:
-
             prRed("Password not found\nTryAain\n")
             ask_for_user(arg1)
-
         else:
-
             arg1.sendline(f"su - {username}")
             i3 = arg1.expect(["su: user king does not exist", "Password:"])
-
             if i3 == 0:
-
                 prRed(f"\nuser {username} does not exist\n")
                 ask_for_user(arg1)
- 
             elif i3 == 1:
-               
                 arg1.sendline(password)
                 i4 = arg1.expect(["failure", "@"])
-                
                 if i4 == 0:
-                   
                    prRed("\nIncorrect Password\n")
                    ask_for_user(arg1)
-                
                 elif i4 == 1:
-                    
                     prGreen(f"Logged in as {username}")
                     arg1.interact()
-                
                 else:
-
                     prRed("\nTry Again\n")
                     ask_for_user(arg1)
-
             else:
-                
                 prRed("Something went wrong!")
                 arg1.interact()
-
-
     elif user_present.lower() == "n":
         arg1.interact()
        
 
 def main():
     
-    prHighLight("@Luckythandel")
+    prPink("@Luckythandel")
     child.sendline(f"nc -lvp {port}")
     rev_shell = f"\nListener Started At Port {port} "
     cprint(rev_shell, 'red', attrs=['blink', 'bold'])
     take_control(child)
-
-
-        
-
+    return 0
+    
 def questions(proc2):
     
     time.sleep(time_wait)
