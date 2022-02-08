@@ -1,8 +1,8 @@
-**About**
+# About
 
 Netx is a python script made with [Pexpect](https://pexpect.readthedocs.io/) lib.  Netx provides you a fully interactive shell. You can use this Python script in [CTF challanges](https://hackthebox.eu) where you have to use Netcat listener and after getting a shell, you make it an interactive shell. It can be frustrating sometimes. this python script will do the same without wasting your precious time. But it is only for Linux.
 
-**Functions**
+# Functions
  * Choose which command you want to run 
  * Leave at any command and interact from there
  * Auto choose Python version based on Remote Host
@@ -11,7 +11,7 @@ Netx is a python script made with [Pexpect](https://pexpect.readthedocs.io/) lib
  * Change user (sudo user)
  * Use Netcat 
  
-  **Screenshots**
+# Screenshots
    
 (1). Help
 ![img1](https://github.com/luckythandel/netx/blob/master/Screenshots/help.png)
@@ -27,10 +27,6 @@ Netx is a python script made with [Pexpect](https://pexpect.readthedocs.io/) lib
 ![img4](https://github.com/luckythandel/netx/blob/master/Screenshots/choosing_n.png)
 
 
-**Donate**
-
-+91 9828654788 (paytm)
-
 **RUN**
 
 Before running the script, install all necessary requirements.
@@ -40,8 +36,7 @@ Then run it with python3
 
     python3 netx.py
 
-**Contact**
 
+### Contact
 Email - luckythandel28@gmail.com
-
 Phone - +91 7014362046
