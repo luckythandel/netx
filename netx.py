@@ -113,6 +113,11 @@ def take_control(proc):
         try:
         
             proc.sendline("python -c 'import pty;pty.spawn(\"/bin/bash\")'")
+            python_bin_check = ''
+            for i in range(7):
+                python_bin_check = proc.readline()
+            if("not found" in python_bin_check):
+                raise Exception
             proc.expect("@", timeout=5)
             proc.sendcontrol("z")
             proc.sendline("stty raw -echo")
@@ -125,8 +130,7 @@ def take_control(proc):
             terminal_size(proc)
             
 
-        except:
-
+        except Exception as e:
             proc.sendline("python3 -c 'import pty;pty.spawn(\"/bin/bash\")'")
             proc.expect("@", timeout=5)
             proc.sendcontrol("z")
